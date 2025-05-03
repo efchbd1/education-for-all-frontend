@@ -18,9 +18,21 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": "src",
+    "paths": {
+      "redux/*": ["data/redux/*"],
+      "domainTypes/*": ["data/types/domainTypes/*"],
+      "reactTypes/*": ["data/types/reactTypes/*"],
+      "services/*": ["data/services/*"],
+      "hooks/*": ["data/hooks/*"],
+      "routes/*": ["routes/*"],
+      "components/*": ["components/*"],
+      "utils/*": ["utils/*"]
+    }
   },
+  
   "include": [
     "src"
-  ]
+, "archive/utils.ts", "archive/dateUtils.ts", "archive/signUpMessage.tsx", "archive/counselorMessage.tsx", "archive/topicArchiveOld.tsx", "archive/topicListBeforeHomePage.tsx", "archive/useStyles.ts"  ]
 }
