@@ -2,6 +2,7 @@ import React from 'react';
 import { Dialog, DialogContent, Typography, Box, Link } from '@mui/material';
 import { PATHS } from 'routes/paths';
 import { useAuthenticationDialogStyles } from 'styles/AuthenticationDialog.styles';
+import { useNavigate } from 'react-router-dom';
 
 type AuthenticationDialogProps = {
     isOpen: boolean;
@@ -24,10 +25,11 @@ const AuthenticationDialog: React.FC<AuthenticationDialogProps> = ({
     warningMessage
 }) => {
     const classes = useAuthenticationDialogStyles;
+    const navigate = useNavigate(); 
 
     const handleLinkClick = (path: string) => {
         onClose();
-        window.location.href = path;
+        navigate(path); 
     };
 
     return (
