@@ -14,11 +14,9 @@ import {
   VisibilityOff,
 } from "@mui/icons-material";
 import { useLoginForm } from "../hooks/useLoginForm";
-import { useStyles } from "../styles/form"
-
+import * as classes from "../styles/form"
 //Login using username and password.
 const LoginPage: React.FC = () => {
-  const classes = useStyles();
   const {
     formData,
     errors,
@@ -29,8 +27,8 @@ const LoginPage: React.FC = () => {
   } = useLoginForm();
 
   return (
-    <Container maxWidth="sm" className={classes.container}>
-      <Typography variant="h2" align="center" gutterBottom className={classes.title}>
+    <Container maxWidth="sm" sx={classes.container}>
+      <Typography variant="h2" align="center" gutterBottom sx={classes.title}>
         התחברות
       </Typography>
       <form onSubmit={handleSubmit}>
@@ -45,11 +43,11 @@ const LoginPage: React.FC = () => {
           error={!!errors.name}
           helperText={errors.name}
           InputProps={{
-            startAdornment: <AccountCircle className={classes.icon} />,
+            startAdornment: <AccountCircle sx={classes.icon} />,
             autoFocus: true,
             style: { direction: "rtl" },
           }}
-          className={classes.textField}
+          sx={classes.textField}
         />
         <TextField
           fullWidth
@@ -63,7 +61,7 @@ const LoginPage: React.FC = () => {
           error={!!errors.password}
           helperText={errors.password}
           InputProps={{
-            startAdornment: <Lock className={classes.icon} />,
+            startAdornment: <Lock sx={classes.icon} />,
             endAdornment: (
               <InputAdornment position="end">
                 <IconButton onClick={handleClickShowPassword} edge="end">
@@ -73,10 +71,10 @@ const LoginPage: React.FC = () => {
             ),
             style: { direction: "rtl" },
           }}
-          className={classes.textField}
+          sx={classes.textField}
         />
         {errors.form && (
-          <Typography color="error" className={classes.errorText}>
+          <Typography color="error" sx={classes.errorText}>
             {errors.form}
           </Typography>
         )}
@@ -85,7 +83,7 @@ const LoginPage: React.FC = () => {
           variant="contained"
           color="primary"
           fullWidth
-          className={classes.button}
+          sx={classes.button}
         >
           התחברו
         </Button>

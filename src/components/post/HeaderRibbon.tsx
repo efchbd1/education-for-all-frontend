@@ -1,7 +1,6 @@
 import React from 'react';
-import { makeStyles } from '@mui/styles';
 
-const useStyles = makeStyles({
+const styles = {
     headerRibbon: {
         position: 'absolute',
         top: '0',
@@ -12,20 +11,20 @@ const useStyles = makeStyles({
         padding: '2px 10px',
         borderRadius: '0 0 10px 10px',
         fontSize: '0.7rem',
-    },
+    } as React.CSSProperties,
 
     ownerRibbon: {
-        backgroundColor: 'rgba(255, 0, 0, 0.4)',  // Red for topic owner
-    },
+        backgroundColor: 'rgba(255, 0, 0, 0.4)',
+    } as React.CSSProperties,
 
     counselorRibbon: {
-        backgroundColor: 'rgba(0, 128, 0, 0.4)', // Green for counselor
-    },
+        backgroundColor: 'rgba(0, 128, 0, 0.4)',
+    } as React.CSSProperties,
 
     userRibbon: {
-        backgroundColor: 'rgba(255, 165, 0, 0.4)', // Orange for regular user
-    },
-});
+        backgroundColor: 'rgba(255, 165, 0, 0.4)',
+    } as React.CSSProperties,
+};
 
 type HeaderRibbonProps = {
     userType: 'owner' | 'counselor' | 'user';
@@ -33,18 +32,20 @@ type HeaderRibbonProps = {
 
 // HeaderRibbon component displayed on a post, showing user roles with different background colors.
 const HeaderRibbon: React.FC<HeaderRibbonProps> = ({ userType }) => {
-    const classes = useStyles();
 
     // Mapping user roles to corresponding classes and labels
     const ribbonDetails = {
-        owner: { className: classes.ownerRibbon, label: 'פותח האשכול' },
-        counselor: { className: classes.counselorRibbon, label: 'יועץ' },
-        user: { className: classes.userRibbon, label: 'משתמש רגיל' },
+        owner: { style: styles.ownerRibbon, label: 'פותח האשכול' },
+        counselor: { style: styles.counselorRibbon, label: 'יועץ' },
+        user: { style: styles.userRibbon, label: 'משתמש רגיל' },
     };
 
-    const { className, label } = ribbonDetails[userType];
+    const { style, label } = ribbonDetails[userType];
 
-    return <div className={`${classes.headerRibbon} ${className}`}>{label}</div>;
+    return (<div style={{ ...styles.headerRibbon, ...style }}>
+        {label}
+    </div>
+    );
 };
 
 export default HeaderRibbon;

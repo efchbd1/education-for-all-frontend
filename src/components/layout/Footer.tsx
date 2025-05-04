@@ -1,18 +1,22 @@
 import { useState } from "react";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Typography from "@material-ui/core/Typography";
-import Container from "@material-ui/core/Container";
-import Link from "@material-ui/core/Link";
+import CssBaseline from '@mui/material/CssBaseline';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import Link from '@mui/material/Link';
 import { PATHS } from 'routes/paths';
 import ContactUsDialog from 'components/dialogs/contact/ContactUsDialog';
 import AuthenticationDialog from 'components/dialogs/AuthenticationDialog';
 import { useAppSetup } from "data/useAppSetup";
-import { useFooterStyles } from "styles/Footer.styles";
+import {
+  FooterRoot,
+  FooterBar,
+  CopyrightText,
+  FooterLink,
+  SecondaryBox
+} from 'styles/Footer.styles';
 import Chatbot from "components/layout/Chatbot";
-import { Box } from "@mui/material";
 
 export default function Footer() {
-  const classes = useFooterStyles();
   const { isAuthenticated } = useAppSetup();
   const [isContactDialogOpen, setIsContactDialogOpen] = useState(false);
   const [isAuthDialogOpen, setIsAuthDialogOpen] = useState(false);
@@ -28,30 +32,31 @@ export default function Footer() {
   };
 
   return (
-    <div className={classes.root}>
+    <FooterRoot>
       <CssBaseline />
       <Chatbot />
-      <footer className={classes.footer}>
+      <FooterBar>
         <Container maxWidth="sm">
-          <Typography variant="body2" className={classes.copyright}>
-            <Link color="inherit" href={PATHS.ForumRules}>
+          <CopyrightText variant="body2">
+            <FooterLink color="inherit" href={PATHS.ForumRules}>
               תקנון
-            </Link>{" "}
-            <Link color="inherit" onClick={handleContactClick}>
+            </FooterLink>
+            <FooterLink color="inherit" onClick={handleContactClick}>
               צור קשר
-            </Link>{" "}
-            <Box>
-              <Typography variant="body2" color="textSecondary" align="center">
-                © {new Date().getFullYear()} אפרת בדיל, פיתוח מקצועי מקצה לקצה. {" "}
-                <Link color="inherit" href={PATHS.AboutMe}>
-                  לקריאה אודותיי לחצו כאן
-                </Link>
-              </Typography>
-            </Box>
-          </Typography>
+            </FooterLink>
+            <SecondaryBox>
+              © {new Date().getFullYear()} אפרת בדיל, פיתוח מקצועי מקצה לקצה.{' '}
+              <FooterLink color="inherit" href={PATHS.AboutMe}>
+                לקריאה אודותיי לחצו כאן
+              </FooterLink>
+            </SecondaryBox>
+          </CopyrightText>
         </Container>
-      </footer>
-      <ContactUsDialog isOpen={isContactDialogOpen} onClose={() => setIsContactDialogOpen(false)} />
+      </FooterBar>
+      <ContactUsDialog
+        isOpen={isContactDialogOpen}
+        onClose={() => setIsContactDialogOpen(false)}
+      />
       <AuthenticationDialog
         isOpen={isAuthDialogOpen}
         onClose={() => setIsAuthDialogOpen(false)}
@@ -61,6 +66,6 @@ export default function Footer() {
         setHoveredLogin={setHoveredLogin}
         warningMessage="רק משתמש רשום יכול ליצור קשר"
       />
-    </div>
+    </FooterRoot>
   );
 }

@@ -8,7 +8,7 @@ import ContactCounselorDialog from 'components/dialogs/contact/ContactCounselorD
 import { useCounselorPageStyles } from 'styles/CounselorPage.styles';
 
 const CounselorsPage: React.FC = () => {
-    const classes = useCounselorPageStyles();
+    const classes = useCounselorPageStyles;
     const { dispatch, counselors } = useAppSetup();
     const [searchQuery, setSearchQuery] = useState<string>('');
     const [selectedExperienceLevel, setSelectedExperienceLevel] = useState<string | null>(null);
@@ -76,12 +76,12 @@ const CounselorsPage: React.FC = () => {
     };
 
     return (
-        <Container maxWidth="lg" className={classes.root}>
-            <Typography variant="h3" component="h1" gutterBottom className={classes.title}>
+        <Container maxWidth="lg" sx={classes.root}>
+            <Typography variant="h3" component="h1" gutterBottom sx={classes.title}>
                 היועצים שלנו
             </Typography>
 
-            <Box className={classes.explanationBox}>
+            <Box sx={classes.explanationBox}>
                 <Typography variant="body1" component="p">
                     התגיות מציינות את ניסיון היועץ: מתחיל: 0-2 שנות ניסיון, מנוסה: 3-5 שנים, מומחה: 5-10 שנים, בכיר: 10+ שנים.
                 </Typography>
@@ -134,9 +134,9 @@ const CounselorsPage: React.FC = () => {
                     חיפוש לפי שם פרטי או שם משפחה:
                 </Typography>
 
-                <Box className={classes.searchBoxContainer}>
+                <Box sx={classes.searchBoxContainer}>
                     <TextField
-                        className={classes.searchBox}
+                        sx={classes.searchBox}
                         onChange={handleSearchChange}
                         variant="outlined"
                         fullWidth
@@ -168,53 +168,63 @@ const CounselorsPage: React.FC = () => {
 
                     return (
                         <Grid item xs={12} sm={6} lg={4} key={`${counselor.id}-${index}`}>
-                            <Box className={classes.counselorItem} component={Paper}>
+                            <Box sx={classes.counselorItem} component={Paper}>
                                 {/* Display experience level badge */}
                                 {counselor.yearsOfExperience <= 2 && (
-                                    <Chip label="יועץ מתחיל" className={classes.badge} style={{ backgroundColor: '#F5DEB3', color: '#6F4E37' }} />
+                                    <Chip label="יועץ מתחיל" sx={classes.badge} style={{ backgroundColor: '#F5DEB3', color: '#6F4E37' }} />
                                 )}
                                 {counselor.yearsOfExperience >= 3 && counselor.yearsOfExperience <= 5 && (
-                                    <Chip label="יועץ מנוסה" className={classes.badge} style={{ backgroundColor: '#C88A4A', color: '#fff' }} />
+                                    <Chip label="יועץ מנוסה" sx={classes.badge} style={{ backgroundColor: '#C88A4A', color: '#fff' }} />
                                 )}
                                 {counselor.yearsOfExperience > 5 && counselor.yearsOfExperience <= 10 && (
-                                    <Chip label="יועץ מומחה" className={classes.badge} style={{ backgroundColor: '#8B4513', color: '#fff' }} />
+                                    <Chip label="יועץ מומחה" sx={classes.badge} style={{ backgroundColor: '#8B4513', color: '#fff' }} />
                                 )}
                                 {counselor.yearsOfExperience > 10 && (
-                                    <Chip label="יועץ בכיר" className={classes.badge} style={{ backgroundColor: '#4B2C20', color: '#fff' }} />
+                                    <Chip label="יועץ בכיר" sx={classes.badge} style={{ backgroundColor: '#4B2C20', color: '#fff' }} />
                                 )}
 
                                 {/* Display counselor name and details */}
-                                <Typography className={classes.counselorName}>
+                                <Typography sx={classes.counselorName}>
                                     {counselor.name}
                                 </Typography>
                                 <div>
-                                    <div className={classes.counselorDetails}>
-                                        <Person className={classes.icon} />
+                                    <div style={useCounselorPageStyles.counselorDetails}>
+                                        <Person style={useCounselorPageStyles.icon} />
                                         <span><strong>מי אני:</strong> {counselor.bio}</span>
                                     </div>
-                                    <div className={classes.counselorDetails}>
-                                        <WorkOutline className={classes.icon} />
+                                    <div style={useCounselorPageStyles.counselorDetails}>
+                                        <WorkOutline style={useCounselorPageStyles.icon} />
                                         <span><strong>שנות ניסיון:</strong> {counselor.yearsOfExperience}</span>
                                     </div>
-                                    <div className={classes.counselorDetails}>
-                                        <BusinessCenter className={classes.icon} />
+                                    <div style={useCounselorPageStyles.counselorDetails}>
+                                        <BusinessCenter style={useCounselorPageStyles.icon} />
                                         <span><strong>היסטוריית עבודה:</strong> {counselor.workHistory}</span>
                                     </div>
-                                    <div className={classes.counselorDetails}>
-                                        <SchoolOutlined className={classes.icon} />
+                                    <div style={useCounselorPageStyles.counselorDetails}>
+                                        <SchoolOutlined style={useCounselorPageStyles.icon} />
                                         <span><strong>תארים אקדמיים ומוסדות לימוד:</strong> {counselor.academicDegrees} - {counselor.educationalInstitutions}</span>
                                     </div>
                                 </div>
                                 {/* Contact button */}
                                 <a
                                     href="#"
-                                    className={classes.button}
+                                    style={{
+                                        marginTop: "20px",
+                                        backgroundColor: "#D77F3E",
+                                        color: "#fff",
+                                        display: "inline-flex",
+                                        alignItems: "center",
+                                        textDecoration: "none",
+                                        padding: "10px 20px",
+                                        borderRadius: "8px",
+                                        cursor: "pointer",
+                                    }}
                                     onClick={(e) => {
                                         e.preventDefault();
                                         handleContactClick(counselor.email, counselor.name);
                                     }}
                                 >
-                                    <MailOutline className={classes.buttonIcon} />
+                                    <MailOutline style={useCounselorPageStyles.buttonIcon} />
                                     צרו קשר
                                 </a>
                             </Box>

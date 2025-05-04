@@ -1,16 +1,6 @@
 import React from "react";
-import { IconButton, Typography } from "@material-ui/core";
+import { IconButton, Typography } from "@mui/material";
 import { ThumbUp } from "@mui/icons-material";
-import { makeStyles } from "@mui/styles";
-
-const useStyles = makeStyles({
-  likeIcon: {
-    color: "black !important",
-  },
-  likedIcon: {
-    color: "green !important",
-  },
-});
 
 //The button is displayed on top of the post.
 const LikeButton: React.FC<{
@@ -19,7 +9,6 @@ const LikeButton: React.FC<{
   disabled: boolean; // The button is disabled if the user has already liked the post or has clicked the dislike-report button.
   likesCount: number;
 }> = ({ liked, onClick, disabled, likesCount }) => {
-  const classes = useStyles();
 
   return (
     <IconButton
@@ -27,7 +16,9 @@ const LikeButton: React.FC<{
       aria-label="like"
       onClick={onClick}
       disabled={disabled}
-      className={liked ? classes.likedIcon : classes.likeIcon}
+      sx={{
+        color: liked ? 'green !important' : 'black !important', 
+      }}
     >
       <ThumbUp />
       <Typography variant="body2" color="textSecondary" style={{ marginLeft: "5px" }}>

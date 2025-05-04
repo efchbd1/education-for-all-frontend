@@ -24,7 +24,7 @@ const AuthenticationDialog: React.FC<AuthenticationDialogProps> = ({
     setHoveredLogin,
     warningMessage
 }) => {
-    const classes = useAuthenticationDialogStyles();
+    const classes = useAuthenticationDialogStyles;
 
     const handleLinkClick = (path: string) => {
         onClose();
@@ -33,14 +33,14 @@ const AuthenticationDialog: React.FC<AuthenticationDialogProps> = ({
 
     return (
         <Dialog open={isOpen} onClose={onClose}>
-            <DialogContent className={classes.dialogContent}>
-                <Warning className={classes.warningIcon} />
-                <Typography variant="h4" className={classes.heading}>
+            <DialogContent sx={classes.dialogContent}>
+                <Warning sx={classes.warningIcon} />
+                <Typography variant="h4" sx={classes.heading}>
                     {warningMessage}
                 </Typography>
-                <Box className={classes.flexContainer}>
+                <Box sx={classes.flexContainer}>
                     <Box
-                        className={classes.linkContainer}
+                        sx={classes.linkContainer}
                         onMouseEnter={() => setHoveredSignUp(true)}
                         onMouseLeave={() => setHoveredSignUp(false)}
                         onClick={() => handleLinkClick(PATHS.UserSignUp)}
@@ -48,13 +48,13 @@ const AuthenticationDialog: React.FC<AuthenticationDialogProps> = ({
                         <Link underline="none">
                             הירשם
                         </Link>
-                        <Box className={classes.underline} style={{ width: hoveredSignUp ? '100%' : '0%' }} />
+                        <Box sx={classes.underline} style={{ width: hoveredSignUp ? '100%' : '0%' }} />
                     </Box>
                     <Typography variant="body1" component="span" style={{ margin: '0 10px', fontSize: '1em' }}>
                         או
                     </Typography>
                     <Box
-                        className={classes.linkContainer}
+                        sx={classes.linkContainer}
                         onMouseEnter={() => setHoveredLogin(true)}
                         onMouseLeave={() => setHoveredLogin(false)}
                         onClick={() => handleLinkClick(PATHS.LogIn)}
@@ -62,7 +62,7 @@ const AuthenticationDialog: React.FC<AuthenticationDialogProps> = ({
                         <Link underline="none">
                             התחבר
                         </Link>
-                        <Box className={classes.underline} style={{ width: hoveredLogin ? '100%' : '0%' }} />
+                        <Box sx={classes.underline} style={{ width: hoveredLogin ? '100%' : '0%' }} />
                     </Box>
                 </Box>
             </DialogContent>

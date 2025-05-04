@@ -1,6 +1,4 @@
-import { makeStyles } from "@mui/styles";
-
-export const useTopicItemStyles = makeStyles({
+export const useTopicItemStyles = {
   root: {
     marginTop: "64px",
     padding: "20px",
@@ -74,4 +72,4 @@ export const useTopicItemStyles = makeStyles({
     width: "120px !important",
     height: "120px !important",
   },
-});
+}; 

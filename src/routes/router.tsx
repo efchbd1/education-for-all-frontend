@@ -1,24 +1,37 @@
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 import { createBrowserRouter, Navigate, Outlet, useLocation } from "react-router-dom";
+import { isProfessional, selectIsAuthenticated } from "data/redux/auth/auth.selectors";
 import { PATHS } from "routes/paths";
+import { RootState } from "data/redux/store";
+import NavBar from "components/layout/navbar/Navbar";
+import StickyFooter from "components/layout/Footer";
+import TopicItem from "components/topic/TopicItem";
+import Box from "@mui/material/Box";
+import { styled } from "@mui/material/styles";
+import AboutMePage from "../pages/AboutMePage";
+import HomePage from "../pages/HomePage";
+import CreateTopicPage from "../pages/CreateTopicPage";
+import DeletePostPage from "../pages/DeletePostPage";
+import UserRegPage from "../pages/signup/UserRegPage";
 import AboutPage from "../pages/AboutPage";
 import RulesPage from "../pages/RulesPage";
 import LoginPage from "../pages/LoginPage";
 import CounselorsPage from "../pages/CounselorsPage";
-import NavBar from "components/layout/navbar/Navbar";
-import StickyFooter from "components/layout/Footer";
-import UserRegPage from "../pages/signup/UserRegPage";
-import TopicItem from "components/topic/TopicItem";
-import DeletePostPage from "../pages/DeletePostPage";
-import { isProfessional, selectIsAuthenticated } from "data/redux/auth/auth.selectors";
-import { RootState } from "data/redux/store";
-import CreateTopicPage from "../pages/CreateTopicPage";
-import HomePage from "../pages/HomePage";
 import CounselorRegPage from "../pages/signup/CounselorRegPage";
-import { makeStyles } from "@material-ui/core";
 import image from "../../src/images/image6.png";
-import { useEffect } from "react";
-import AboutMePage from "../pages/AboutMePage";
+const Root = styled(Box)(({ theme }) => ({
+  fontFamily: "Arial, sans-serif",
+  lineHeight: 1.6,
+  margin: 0,
+  padding: 0,
+  backgroundImage: `url(${image})`,
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
+  minHeight: "100vh",
+  backgroundAttachment: "scroll",
+}));
 
 // Router configuration, mapping paths to components
 export const router = createBrowserRouter([
@@ -42,23 +55,7 @@ export const router = createBrowserRouter([
   },
 ]);
 
-const useStyles = makeStyles(() => ({
-  root: {
-    fontFamily: "Arial, sans-serif",
-    lineHeight: 1.6,
-    margin: 0,
-    padding: 0,
-    backgroundImage: `url(${image})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    minHeight: "100vh",
-    backgroundAttachment: "scroll",
-  },
-}));
-
 function Layout() {
-  const classes = useStyles();
   const location = useLocation();
 
   useEffect(() => {
@@ -100,7 +97,7 @@ function Layout() {
   }, [location]);
 
   return (
-    <div className={classes.root}>
+    <Root>
       <header>
         <Header />
       </header>
@@ -110,7 +107,7 @@ function Layout() {
       <footer>
         <StickyFooter />
       </footer>
-    </div>
+    </Root>
   );
 }
 
@@ -129,3 +126,4 @@ function NewTopicGuard() {
     return <Navigate to={PATHS.UserSignUp} />;
   }
 }
+

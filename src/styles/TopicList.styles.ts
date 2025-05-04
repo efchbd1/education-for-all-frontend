@@ -1,6 +1,4 @@
-import { makeStyles } from "@mui/styles";
-
-export const useTopicListStyles = makeStyles({
+export const useTopicListStyles = {
   root: {
     direction: "rtl",
   },
@@ -75,6 +73,7 @@ export const useTopicListStyles = makeStyles({
 
   //Styles for card
   card: {
+    border: "1px solid #ccc",       
     marginBottom: "20px",
     margin: "0 auto",
     borderRadius: "10px",
@@ -133,4 +132,4 @@ export const useTopicListStyles = makeStyles({
     fontWeight: "bold",
     color: "#444",
   },
-});
+};

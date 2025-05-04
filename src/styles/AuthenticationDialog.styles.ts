@@ -1,6 +1,4 @@
-import { makeStyles } from "@mui/styles";
-
-export const useAuthenticationDialogStyles = makeStyles({
+export const useAuthenticationDialogStyles = {
   dialogContent: {
     display: "flex",
     flexDirection: "column",
@@ -67,4 +65,4 @@ export const useAuthenticationDialogStyles = makeStyles({
       fontSize: "1.5em",
     },
   },
-});
+};

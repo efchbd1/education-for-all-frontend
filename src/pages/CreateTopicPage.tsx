@@ -1,10 +1,9 @@
 import React, { FormEvent } from 'react';
 import { TextField, Button, Typography, Container } from '@mui/material';
 import { useCreateTopic } from '../hooks/useCreateTopic';
-import { useStyles } from 'styles/form';
+import * as classes from 'styles/form';
 
 const CreateTopicPage: React.FC = () => {
-    const classes = useStyles();
     const { formData, initialPostContent, errors, handleChange, handleSubmit } = useCreateTopic();
 
     const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -13,8 +12,8 @@ const CreateTopicPage: React.FC = () => {
     };
 
     return (
-        <Container maxWidth="sm" className={classes.container}>
-            <Typography variant="h2" className={classes.title}>
+        <Container maxWidth="sm" sx={classes.container}>
+            <Typography variant="h2" sx={classes.title}>
                 פתיחת אשכול חדש
             </Typography>
             <form onSubmit={handleFormSubmit}>
@@ -29,7 +28,7 @@ const CreateTopicPage: React.FC = () => {
                     error={!!errors.title}
                     helperText={errors.title}
                     InputLabelProps={{ shrink: true }}
-                    InputProps={{ classes: { input: classes.inputField } }}
+                    sx={{ input: classes.inputField }}
                 />
                 <TextField
                     fullWidth
@@ -44,14 +43,16 @@ const CreateTopicPage: React.FC = () => {
                     error={!!errors.initialPostContent}
                     helperText={errors.initialPostContent}
                     InputLabelProps={{ shrink: true }}
-                    InputProps={{ classes: { input: classes.inputField } }}
-                    className={classes.textField}
+                    sx={{
+                        ...classes.textField,
+                        textarea: classes.inputField,
+                    }}
                 />
-                <Button variant="contained" type="submit" fullWidth className={classes.button}>
+                <Button variant="contained" type="submit" fullWidth sx={classes.button}>
                     צרו אשכול
                 </Button>
                 {errors.form && (
-                    <Typography variant="body2" className={classes.errorText}>
+                    <Typography variant="body2" sx={classes.errorText}>
                         {errors.form}
                     </Typography>
                 )}

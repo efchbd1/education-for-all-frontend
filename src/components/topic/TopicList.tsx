@@ -31,7 +31,7 @@ const formatDate = (date: string | Date): string => {
 };
 
 const TopicList: React.FC = () => {
-  const classes = useTopicListStyles();
+  const classes = useTopicListStyles;
   const topics: TopicType[] = useAppSelector(selectTopic);
   const [usersMap, setUsersMap] = useState<{ [key: string]: string }>({});
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -101,7 +101,7 @@ const TopicList: React.FC = () => {
   // Show loading state when topics are not yet available
   if (!topics || topics.length === 0) {
     return (
-      <Box className={classes.loadingContainer}>
+      <Box sx={classes.loadingContainer}>
         <CircularProgress size={70} thickness={5} color="secondary" />
         <Typography variant="h6" align="center" classes={classes.loadingText}>
           טוען...
@@ -127,16 +127,16 @@ const TopicList: React.FC = () => {
     setCurrentPage(page);
   };
   return (
-    <Box className={classes.root}>
+    <Box sx={classes.root}>
 
       {/* Pagination buttons - hidden during search */}
-      <Box className={classes.pagination}>
+      <Box sx={classes.pagination}>
         {!searchQuery && Array.from({ length: totalPages }, (_, index) => (
           <Button
             key={index + 1}
             variant="outlined"
             onClick={() => handlePageChange(index + 1)}
-            className={classes.paginationButton}
+            sx={classes.paginationButton}
             disabled={currentPage === index + 1}
           >
             {index + 1}
@@ -145,13 +145,13 @@ const TopicList: React.FC = () => {
       </Box>
 
       {/* Search field */}
-      <Box className={classes.root}>
+      <Box sx={classes.root}>
         <Typography variant="h6" align="center">
           חפשו נושא ברחבי הפורום
         </Typography>
 
         <TextField
-          className={classes.searchBox}
+          sx={classes.searchBox}
           variant="outlined"
           value={searchQuery}
           onChange={handleSearchChange}
@@ -160,19 +160,19 @@ const TopicList: React.FC = () => {
       {/* Topic list */}
       <List>
         {currentTopics.map((topic) => (
-          <Card key={topic.id} className={classes.card} onClick={() => handleTopicClick(topic)}>
-            <CardContent className={classes.cardContent}>
-              <Typography className={classes.title}>{topic.title}</Typography>
+          <Card key={topic.id} sx={classes.card} onClick={() => handleTopicClick(topic)}>
+            <CardContent sx={classes.cardContent}>
+              <Typography sx={classes.title}>{topic.title}</Typography>
             </CardContent>
-            <CardActions className={classes.cardActions}>
-              <Box className={classes.infoContainer}>
-                <Typography className={classes.infoItem}>
+            <CardActions sx={classes.cardActions}>
+              <Box sx={classes.infoContainer}>
+                <Typography sx={classes.infoItem}>
                   <strong>בתאריך:</strong> {formatDate(topic.dateCreated).split(",")[0]}
                 </Typography>
-                <Typography className={classes.infoItem}>
+                <Typography sx={classes.infoItem}>
                   . <strong>בשעה:</strong> {formatDate(topic.dateCreated).split(",")[1]}
                 </Typography>
-                <Typography className={classes.infoItem}>
+                <Typography sx={classes.infoItem}>
                   . <strong>נשאל על ידי:</strong> {usersMap[topic.userId] || "טוען שם משתמש..."}.
                 </Typography>
               </Box>

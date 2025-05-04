@@ -1,16 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Dialog, DialogContent, DialogActions, TextField, Button, DialogTitle } from '@mui/material';
 import { contactGeneral } from 'data/services/contact.service';
-import { makeStyles } from '@mui/styles';
 import { ContactRequestType } from 'data/types/reactTypes/contact/contactRequest.types';
 import { useAppSetup } from 'data/useAppSetup';
 import { validateContactMessage } from "utils/validation";
-
-const useStyles = makeStyles({
-  dialogContent: {
-    direction: 'rtl',
-  },
-});
 
 type ContactUsDialogProps = {
   isOpen: boolean;
@@ -18,7 +11,6 @@ type ContactUsDialogProps = {
 }
 
 const ContactUsDialog: React.FC<ContactUsDialogProps> = ({ isOpen, onClose }) => {
-  const classes = useStyles();
   const { currentUser } = useAppSetup();
   const [message, setMessage] = useState<string>('');
   const [error, setError] = useState<string>("");
@@ -66,7 +58,7 @@ const ContactUsDialog: React.FC<ContactUsDialogProps> = ({ isOpen, onClose }) =>
 
   return (
     <Dialog open={isOpen} onClose={onClose}>
-      <DialogContent className={classes.dialogContent}>
+      <DialogContent sx={{ direction: 'rtl' }}>
         <DialogTitle>          צרו קשר        </DialogTitle>
         <TextField
           autoFocus

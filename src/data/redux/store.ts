@@ -7,7 +7,6 @@ import authReducer from "./auth/auth.slice";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
-import { thunk } from "redux-thunk";
 
 const persistConfig = {
   key: "root",
@@ -35,7 +34,7 @@ export const store = configureStore({
           "persist/REGISTER",
         ],
       },
-    }).concat(thunk),
+    }),
   devTools: process.env.NODE_ENV !== "production",
 });
 

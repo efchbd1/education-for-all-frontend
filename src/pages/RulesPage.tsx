@@ -1,8 +1,16 @@
-import { Container, Typography } from '@material-ui/core';
-import { useRulesPage } from 'styles/RulesPage.styles';
+import { Container, Typography } from '@mui/material';
+import {
+  RulesContainer,
+  RulesTitle,
+  CircularGrid,
+  CardContainer,
+  Card,
+  Front,
+  Back
+} from 'styles/RulesPage.styles';
+
 
 const FlipCards = () => {
-  const classes = useRulesPage();
 
   const rules = [
     {
@@ -37,26 +45,19 @@ const FlipCards = () => {
   ];
 
   return (
-    <Container className={classes.container}>
-      <Typography variant="h4" className={classes.title}>
-        תקנון הפורום
-      </Typography>
-      <div className={classes.circularGrid}>
-        {rules.map((rule, index) => (
-          <div key={index} className={classes.cardContainer}>
-            <div className={classes.card}>
-              <div className={`${classes.cardSide} ${classes.front}`}>
-                {rule.title}
-              </div>
-              <div
-                className={`${classes.cardSide} ${classes.back}`}
-                dangerouslySetInnerHTML={{ __html: rule.content }}
-              />
-            </div>
-          </div>
+    <RulesContainer>
+      <RulesTitle variant="h4">תקנון הפורום</RulesTitle>
+      <CircularGrid>
+        {rules.map((rule, i) => (
+          <CardContainer key={i}>
+            <Card>
+              <Front>{rule.title}</Front>
+              <Back dangerouslySetInnerHTML={{ __html: rule.content }} />
+            </Card>
+          </CardContainer>
         ))}
-      </div>
-    </Container>
+      </CircularGrid>
+    </RulesContainer>
   );
 };
 

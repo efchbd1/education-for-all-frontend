@@ -1,6 +1,4 @@
-import { makeStyles } from "@mui/styles";
-
-export const useCounselorPageStyles = makeStyles({
+export const useCounselorPageStyles = {
   root: {
     marginTop: "50px",
     padding: "20px",
@@ -148,4 +146,4 @@ export const useCounselorPageStyles = makeStyles({
     backgroundColor: "#4B2C20",
     color: "#fff",
   },
-});
+};

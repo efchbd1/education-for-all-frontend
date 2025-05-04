@@ -28,7 +28,7 @@ const PostItem: React.FC<PostItemProps> = ({
     handleReportClick,
     handleContactClick,
 }) => {
-    const classes = usePostItemStyles();
+    const classes = usePostItemStyles;
     const userType = post.userId === topicUserId ? 'owner' : post.counselorId ? 'counselor' : 'user';
 
     // Function to get the user label based on type
@@ -41,12 +41,16 @@ const PostItem: React.FC<PostItemProps> = ({
 
     return (
         <>
-            <ListItem className={`${classes.listItemBase} ${classes.listItemShadow}`}>
+            <ListItem sx={{
+                ...classes.listItemBase,
+                ...classes.listItemShadow
+            }}
+            >
                 <HeaderRibbon
                     userType={userType} />
                 <ListItemText
                     primary={
-                        <Typography variant="h6" className={classes.content}>
+                        <Typography variant="h6" sx={classes.content}>
                             {post.content}
                         </Typography>
                     }
@@ -63,7 +67,7 @@ const PostItem: React.FC<PostItemProps> = ({
                 {/* Show email icon button if counselorId exists */}
                 {post.counselorId && (
                     <IconButton aria-label="Email" onClick={() => post.counselorId && handleContactClick(post.counselorId)}>
-                        <Mail className={classes.blackIcon} />
+                        <Mail sx={classes.blackIcon} />
                     </IconButton>
                 )}
 

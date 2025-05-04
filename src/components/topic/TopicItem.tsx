@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Box, Button, CircularProgress, Typography } from "@mui/material";
-import { reportPost } from "data/services/post.service";
-import PostList from "components/post/PostList";
 import { useAppSetup } from "data/useAppSetup";
+import { reportPost } from "data/services/post.service";
+import { readTopicById } from "data/services/topic.service";
 import { fetchCounselorById } from "data/redux/counselor/counselor.slice";
-import { fetchUserAndCounselorNamesForPosts, fetchTopicData } from "../../hooks/useTopicHook";
+import AuthenticationDialog from '../../components/dialogs/AuthenticationDialog';
+import PostList from "components/post/PostList";
 import DialogsManager from "./DialogManager";
+import { fetchUserAndCounselorNamesForPosts, fetchTopicData } from "../../hooks/useTopicHook";
 import { useLikePost } from "../../hooks/useLikePost";
 import { useAddPost } from "../../hooks/useAddPost";
 import { useTopicItemStyles } from "styles/TopicItem.styles";
-import { readTopicById } from "data/services/topic.service";
-import AuthenticationDialog from '../../components/dialogs/AuthenticationDialog';
 
 const TopicItem: React.FC = () => {
   // Extracts the 'id' parameter from the URL (used for fetching the topic data)
   const { id } = useParams<{ id?: string }>();
-  const classes = useTopicItemStyles();
+  const classes = useTopicItemStyles;
   const { currentUser, isAuthenticated, isCounselor, dispatch } = useAppSetup();
   const currentUserId = currentUser?.id ?? 1;
   const [topic, setTopic] = useState<any>(null);
@@ -190,9 +190,9 @@ const TopicItem: React.FC = () => {
   // Returns loading spinner if data is still loading
   if (isLoading || !topic) {
     return (
-      <Box className={classes.loadingContainer}>
-        <CircularProgress className={classes.loadingSpinner} />
-        <Typography className={classes.loadingText}>
+      <Box sx={classes.loadingContainer}>
+        <CircularProgress sx={classes.loadingSpinner} />
+        <Typography sx={classes.loadingText}>
           ...טוען
         </Typography>
       </Box>
@@ -203,24 +203,24 @@ const TopicItem: React.FC = () => {
     <>
       {/* If the posts haven't loaded yet, a spinner is displayed. */}
       {isLoading ? (
-        <Box className={classes.loadingContainer}>
+        <Box sx={classes.loadingContainer}>
           <CircularProgress size={70} thickness={5} color="secondary" />
-          <Typography className={classes.loadingText}>
+          <Typography sx={classes.loadingText}>
             טוען...
           </Typography>
         </Box>
       ) : (
-        <Box className={classes.root}>
-          <Typography variant="h4" className={classes.title}>{topic.title}</Typography>
+        <Box sx={classes.root}>
+          <Typography variant="h4" sx={classes.title}>{topic.title}</Typography>
 
           {/* A button that plays all posts in the topic. */}
-          <button
-            className={classes.readButton}
+          <Button
+            sx={classes.readButton}
             onClick={handleReadTopic}
             disabled={isReading}
           >
             {isReading ? "משמיע..." : "הפעל השמעה"}
-          </button>
+          </Button>
 
           <PostList
             posts={topic.posts}
@@ -236,7 +236,7 @@ const TopicItem: React.FC = () => {
           <Button
             variant="contained"
             onClick={handleOpenDialog}
-            className={classes.addButton}
+            sx={classes.addButton}
             size="large"
           >  הוספת תגובה
           </Button>

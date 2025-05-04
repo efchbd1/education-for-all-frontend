@@ -1,14 +1,20 @@
 import { useEffect, useState } from "react";
 import { deletePost, getPostByToken } from "data/services/post.service";
 import { PostType } from "data/types/domainTypes/post.types";
-import { useDeletePostPage } from "../styles/DeletePostPage.styles"
-
+import {
+    containerStyle,
+    contentStyle,
+    headingStyle,
+    buttonStyle,
+    linkContainerStyle
+  } from "../styles/DeletePostPage.styles";
+import { Box, Button, Typography } from "@mui/material";
+  
 const DeletePostPage: React.FC = () => {
     const [token, setToken] = useState<string | null>(null);
     const [post, setPost] = useState<PostType | null>(null);
     const [isDeleted, setIsDeleted] = useState<boolean>(false);
     const [deleteButtonDisabled, setDeleteButtonDisabled] = useState<boolean>(false);
-    const classes = useDeletePostPage({ deleteButtonDisabled });
 
     useEffect(() => {
         const pathname = window.location.pathname;
@@ -52,22 +58,22 @@ const DeletePostPage: React.FC = () => {
     };
 
     return (
-        <div className={classes.container}>
-            <div className={classes.content}>
-                <h1 className={classes.heading}>?האם אתה בטוח שברצונך למחוק את התגובה</h1>
-                <button className={classes.button} onClick={handleDeleteClick} disabled={deleteButtonDisabled}>
+        <Box  sx={containerStyle}>
+            <Box  sx={contentStyle}>
+                <Typography component="h1" sx={headingStyle}>?האם אתה בטוח שברצונך למחוק את התגובה</Typography>
+                <Button sx={buttonStyle(deleteButtonDisabled)} onClick={handleDeleteClick} disabled={deleteButtonDisabled}>
                     מחק פוסט
-                </button>
+                </Button>
                 {isDeleted ? (
                     <div>
                         <p>המחיקה התבצעה בהצלחה</p>
                     </div>
                 ) : (
-                    <div className={classes.linkContainer}>
-                    </div>
+                    <Box sx={linkContainerStyle}>
+                    </Box>
                 )}
-            </div>
-        </div>
+            </Box >
+        </Box>
     );
 };
 

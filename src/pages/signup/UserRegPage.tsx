@@ -3,10 +3,9 @@ import { TextField, Button, Typography, Container, Link, Checkbox, FormControlLa
 import { AccountCircle, Lock, Email, Visibility, VisibilityOff } from "@mui/icons-material";
 import { PATHS } from "routes/paths";
 import useUserRegForm from "../../hooks/useUserRegForm";
-import { useStyles } from "../../styles/form"
+import * as classes from "../../styles/form"
 
 const UserRegPage: React.FC = () => {
-  const classes = useStyles();
   const {
     formData,
     emailExists,
@@ -20,12 +19,12 @@ const UserRegPage: React.FC = () => {
   } = useUserRegForm();
 
   return (
-    <Container maxWidth="sm" className={classes.container}>
+    <Container maxWidth="sm" sx={classes.container}>
       <Typography
         variant="h2"
         align="center"
         gutterBottom
-        className={classes.title}
+        sx={classes.title}
       >
         רישום הורה
       </Typography>
@@ -42,11 +41,11 @@ const UserRegPage: React.FC = () => {
           error={!!errors.name}
           helperText={errors.name}
           InputProps={{
-            startAdornment: <AccountCircle className={classes.icon} />,
+            startAdornment: <AccountCircle sx={classes.icon} />,
             autoFocus: true,
             style: { direction: "rtl" },
           }}
-          className={classes.textField}
+          sx={classes.textField}
         />
 
         <TextField
@@ -61,7 +60,7 @@ const UserRegPage: React.FC = () => {
           error={!!errors.password}
           helperText={errors.password}
           InputProps={{
-            startAdornment: <Lock className={classes.icon} />,
+            startAdornment: <Lock sx={classes.icon} />,
             endAdornment: (
               <InputAdornment position="end">
                 <IconButton onClick={handleClickShowPassword} edge="end">
@@ -71,7 +70,7 @@ const UserRegPage: React.FC = () => {
             ),
             style: { direction: "rtl" },
           }}
-          className={classes.textField}
+          sx={classes.textField}
         />
 
         <TextField
@@ -86,7 +85,7 @@ const UserRegPage: React.FC = () => {
           error={!!errors.confirmPassword}
           helperText={errors.confirmPassword}
           InputProps={{
-            startAdornment: <Lock className={classes.icon} />,
+            startAdornment: <Lock sx={classes.icon} />,
             endAdornment: (
               <InputAdornment position="end">
                 <IconButton onClick={handleClickShowConfirmPassword} edge="end">
@@ -96,7 +95,7 @@ const UserRegPage: React.FC = () => {
             ),
             style: { direction: "rtl" },
           }}
-          className={classes.textField}
+          sx={classes.textField}
         />
 
         <TextField
@@ -110,16 +109,16 @@ const UserRegPage: React.FC = () => {
           error={emailExists || !!errors.email}
           helperText={emailExists ? "האימייל כבר קיים" : errors.email}
           InputProps={{
-            startAdornment: <Email className={classes.icon} />,
+            startAdornment: <Email sx={classes.icon} />,
             style: { direction: "rtl" },
           }}
-          className={classes.textField}
+          sx={classes.textField}
         />
 
         <FormControl
           error={!!errors.agreeToTerms}
           component="fieldset"
-          className={classes.errorText}
+          sx={classes.errorText}
         >
           <FormControlLabel
             control={
@@ -157,7 +156,7 @@ const UserRegPage: React.FC = () => {
         <Button
           type="submit"
           variant="contained"
-          className={classes.button}
+          sx={classes.button}
           fullWidth
         >
           הירשמו לפורום
