@@ -1,6 +1,5 @@
 import React from 'react';
 import { Dialog, DialogContent, Typography, Box, Link } from '@mui/material';
-import WarningIcon from '@mui/icons-material/Warning';
 import { PATHS } from 'routes/paths';
 import { useAuthenticationDialogStyles } from 'styles/AuthenticationDialog.styles';
 
@@ -34,7 +33,6 @@ const AuthenticationDialog: React.FC<AuthenticationDialogProps> = ({
     return (
         <Dialog open={isOpen} onClose={onClose}>
             <DialogContent sx={classes.dialogContent}>
-                <WarningIcon sx={classes.warningIcon} />
                 <Typography variant="h4" sx={classes.heading}>
                     {warningMessage}
                 </Typography>
