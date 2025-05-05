@@ -1,7 +1,8 @@
 import { jwtDecode } from "../../auth/utils";
 import axios from "axios";
-import { API_BASE_URL } from "./config/api";
+// import { API_BASE_URL } from "./config/api";
 
+const API_BASE_URL = "https://education-for-all-backend.onrender.com/api";
 // Controller route for authentication endpoints
 const controller = `${API_BASE_URL}/LogIn`;
 
