@@ -18,7 +18,6 @@ export const getUserById = async (id: number): Promise<UserType> => {
 // Adds a new user
 export const addUser = async (user: FormData): Promise<any> => {
   try {
-    console.log("Request received to add user");
     const response = await axios.post(`https://education-for-all-backend.onrender.com/api/User/SignUp`, user);
     return response.data;
   } catch (error) {
