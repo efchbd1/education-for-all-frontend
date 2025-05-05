@@ -30,6 +30,6 @@ const createAxiosInstance = (baseURL: string): AxiosInstance => {
 // Private instance for authenticated requests
 const privateAxiosInstance = createAxiosInstance("https://education-for-all-backend.onrender.com/api")
 // Public instance for unauthenticated requests
-export const publicAxiosInstance = createAxiosInstance("const controller = `https://education-for-all-backend.onrender.com/api");
+export const publicAxiosInstance = createAxiosInstance("https://education-for-all-backend.onrender.com/api");
 
 export default privateAxiosInstance;
