@@ -1,8 +1,7 @@
 import { jwtDecode } from "../../auth/utils";
 import axios from "axios";
-// import { API_BASE_URL } from "./config/api";
+import { API_BASE_URL } from "./config/api";
 
-const API_BASE_URL = "https://education-for-all-backend.onrender.com/api";
 // Controller route for authentication endpoints
 const controller = `${API_BASE_URL}/LogIn`;
 
@@ -17,7 +16,7 @@ export const signin = async (
 ): Promise<{ accessToken: string; role: string }> => {
   try {
     const response = await axios.post<{ accessToken: string }>(
-      `${"https://education-for-all-backend.onrender.com/api/LogIn"}/SignIn`,
+      `${controller}/SignIn`,
       { name, password },
       {
         withCredentials: true,
