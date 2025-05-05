@@ -29,7 +29,7 @@ const UserRegPage: React.FC = () => {
         רישום הורה
       </Typography>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} action="#">
         <TextField
           fullWidth
           margin="normal"
