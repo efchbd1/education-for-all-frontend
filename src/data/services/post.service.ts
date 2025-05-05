@@ -1,10 +1,11 @@
 import { PostType } from "data/types/domainTypes/post.types";
 import axios from "data/axios";
 import { handleRequest } from "utils/handleRequest";
-import { API_BASE_URL } from "./config/api";
+// import { API_BASE_URL } from "./config/api";
 import { getAccessToken } from "../../auth/utils";
 
-const controller = `${API_BASE_URL}/Post`;
+// const controller = `${API_BASE_URL}/Post`;
+const controller = `https://education-for-all-backend.onrender.com/api/Post`;
 
 export const getAllPosts = async (): Promise<PostType[]> => {
   return handleRequest(axios.get<PostType[]>(controller));
@@ -17,7 +18,8 @@ export const getPostById = async (id: number): Promise<PostType> => {
 // Fetches a post by its token (used for deleting posts by the manager site)
 export const getPostByToken = async (token: string): Promise<PostType> => {
   return handleRequest(
-    axios.get<PostType>(`${API_BASE_URL}/posts/delete-post/${token}`)
+    // axios.get<PostType>(`${API_BASE_URL}/posts/delete-post/${token}`)
+    axios.get<PostType>(`${'https://education-for-all-backend.onrender.com/api'}/posts/delete-post/${token}`)
   );
 };
 

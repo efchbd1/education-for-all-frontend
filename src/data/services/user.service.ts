@@ -1,7 +1,8 @@
 import axios from "axios";
 import { UserType } from "./../types/domainTypes/user.types";
-import { API_BASE_URL } from "./config/api";
-const controller = `${API_BASE_URL}/api/User`;
+// import { API_BASE_URL } from "./config/api";
+// const controller = `${API_BASE_URL}/api/User`;
+const controller = `https://education-for-all-backend.onrender.com/api/User`;
 
 export const getUserById = async (id: number): Promise<UserType> => {
   try {

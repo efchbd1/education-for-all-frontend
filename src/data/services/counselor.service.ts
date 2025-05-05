@@ -1,8 +1,9 @@
 import axios from "axios";
-import { API_BASE_URL } from "./config/api";
+// import { API_BASE_URL } from "./config/api";
 import { handleRequest } from "utils/handleRequest";
 import { CounselorType } from "domainTypes/counselor.types";
-const controller = `${API_BASE_URL}/Counselor`;
+// const controller = `${API_BASE_URL}/Counselor`;
+const controller = `https://education-for-all-backend.onrender.com/api/Counselor`;
 
 export const getAllCounselors = async (): Promise<CounselorType[]> => {
   return handleRequest(axios.get(`${controller}`));
