@@ -80,16 +80,14 @@ const handleError = (error: unknown, defaultMessage: string): never => {
 export const refreshToken = async (): Promise<SignInResponse> => {
   try {
     const response = await axios.post<SignInResponse>(
-      `${controller}/Refresh`,
+      `https://education-for-all-backend.onrender.com/api/LogIn/Refresh`,
       null,
       {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       }
     );
-
     const { accessToken } = response.data;
-
     if (!accessToken) {
       throw new Error(
         "Tokens are missing from the server response during refresh."

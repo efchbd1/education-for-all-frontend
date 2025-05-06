@@ -64,7 +64,7 @@ export const addTopic = async (topic: FormData) => {
       },
     };
 
-    const { data } = await axios.post(`${controller}`, topic, config);
+    const { data } = await axios.post(`${"https://education-for-all-backend.onrender.com/api/Topic"}`, topic, config);
     return data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
