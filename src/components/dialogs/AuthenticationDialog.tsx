@@ -3,6 +3,7 @@ import { Dialog, DialogContent, Typography, Box, Link } from '@mui/material';
 import { PATHS } from 'routes/paths';
 import { useAuthenticationDialogStyles } from 'styles/AuthenticationDialog.styles';
 import { useNavigate } from 'react-router-dom';
+import WarningIcon from '@mui/icons-material/Warning';
 
 type AuthenticationDialogProps = {
     isOpen: boolean;
@@ -25,16 +26,17 @@ const AuthenticationDialog: React.FC<AuthenticationDialogProps> = ({
     warningMessage
 }) => {
     const classes = useAuthenticationDialogStyles;
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
     const handleLinkClick = (path: string) => {
         onClose();
-        navigate(path); 
+        navigate(path);
     };
 
     return (
         <Dialog open={isOpen} onClose={onClose}>
             <DialogContent sx={classes.dialogContent}>
+                <WarningIcon sx={classes.warningIcon} />
                 <Typography variant="h4" sx={classes.heading}>
                     {warningMessage}
                 </Typography>

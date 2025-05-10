@@ -11,6 +11,15 @@ export const useAuthenticationDialogStyles = {
     },
   },
 
+  warningIcon: {
+    color: "red",
+    fontSize: "8rem !important",
+    marginBottom: "20px",
+    "@media (max-width: 600px)": {
+      fontSize: "5rem !important",
+    },
+  },
+
   heading: {
     fontSize: "2.5em",
     marginBottom: "20px",
