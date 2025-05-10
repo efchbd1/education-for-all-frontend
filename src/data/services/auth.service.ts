@@ -1,10 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "../../auth/utils";
 import axios from "axios";
+import { PATHS } from "routes/paths";
 // import { API_BASE_URL } from "./config/api";
 
 // Controller route for authentication endpoints
 // const controller = `${API_BASE_URL}/LogIn`;
 const controller = `https://education-for-all-backend.onrender.com/api/LogIn`;
+
+const navigate = useNavigate();
 
 type SignInResponse = {
   accessToken: string;
@@ -103,7 +107,7 @@ export const refreshToken = async (): Promise<SignInResponse> => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
 
-    window.location.href = "/login";
+    navigate(PATHS.LogIn);
     throw new Error("Failed to refresh token due to an unexpected error.");
   }
 };
