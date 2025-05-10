@@ -2,11 +2,10 @@ import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "../../auth/utils";
 import axios from "axios";
 import { PATHS } from "routes/paths";
-// import { API_BASE_URL } from "./config/api";
+import { API_BASE_URL } from "./config/api";
 
 // Controller route for authentication endpoints
-// const controller = `${API_BASE_URL}/LogIn`;
-const controller = `https://education-for-all-backend.onrender.com/api/LogIn`;
+const controller = `${API_BASE_URL}/LogIn`;
 
 const navigate = useNavigate();
 
@@ -84,7 +83,7 @@ const handleError = (error: unknown, defaultMessage: string): never => {
 export const refreshToken = async (): Promise<SignInResponse> => {
   try {
     const response = await axios.post<SignInResponse>(
-      `https://education-for-all-backend.onrender.com/api/LogIn/Refresh`,
+      `${controller}/Refresh`,
       null,
       {
         headers: { "Content-Type": "application/json" },

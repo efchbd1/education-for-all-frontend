@@ -3,7 +3,7 @@ import {
   authRequestMiddleware,
   authResponseMiddleware,
 } from "../auth/authMiddleware";
-// import { API_BASE_URL } from "../data/services/config/api";
+import { API_BASE_URL } from "../data/services/config/api";
 
 // Creates an Axios instance with a given base URL and applies interceptors
 const createAxiosInstance = (baseURL: string): AxiosInstance => {
@@ -28,8 +28,9 @@ const createAxiosInstance = (baseURL: string): AxiosInstance => {
 };
 
 // Private instance for authenticated requests
-const privateAxiosInstance = createAxiosInstance("https://education-for-all-backend.onrender.com/api")
+const privateAxiosInstance = createAxiosInstance(API_BASE_URL);
+
 // Public instance for unauthenticated requests
-export const publicAxiosInstance = createAxiosInstance("https://education-for-all-backend.onrender.com/api");
+export const publicAxiosInstance = createAxiosInstance(API_BASE_URL);
 
 export default privateAxiosInstance;

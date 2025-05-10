@@ -1,8 +1,8 @@
 import axios from "axios";
 import { getAccessToken } from "../../auth/utils";
-// import { API_BASE_URL } from "./config/api";
-// const controller = `${API_BASE_URL}/Topic`;
-const controller = `https://education-for-all-backend.onrender.com/api/Topic`;
+import { API_BASE_URL } from "./config/api";
+
+const controller = `${API_BASE_URL}/Topic`;
 
 // Fetches a topic by its ID along with its posts
 export const getTopicById = async (id: number) => {
@@ -64,7 +64,7 @@ export const addTopic = async (topic: FormData) => {
       },
     };
 
-    const { data } = await axios.post(`${"https://education-for-all-backend.onrender.com/api/Topic"}`, topic, config);
+    const { data } = await axios.post(`${controller}`, topic, config);
     return data;
   } catch (error) {
     if (axios.isAxiosError(error)) {

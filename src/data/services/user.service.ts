@@ -1,8 +1,8 @@
 import axios from "axios";
 import { UserType } from "./../types/domainTypes/user.types";
-// import { API_BASE_URL } from "./config/api";
-// const controller = `${API_BASE_URL}/api/User`;
-const controller = `https://education-for-all-backend.onrender.com/api/User`;
+import { API_BASE_URL } from "./config/api";
+
+const controller = `${API_BASE_URL}/api/User`;
 
 export const getUserById = async (id: number): Promise<UserType> => {
   try {
@@ -19,7 +19,7 @@ export const getUserById = async (id: number): Promise<UserType> => {
 // Adds a new user
 export const addUser = async (user: FormData): Promise<any> => {
   try {
-    const response = await axios.post(`https://education-for-all-backend.onrender.com/api/User/SignUp`, user);
+    const response = await axios.post(`${controller}/SignUp`, user);
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
