@@ -6,6 +6,8 @@ This is the frontend of the **Education for All** platform, a web-based applicat
 
 The application allows parents to post educational questions about their children and receive personal answers from verified counselors. The frontend is built with **React** and includes real-time interactions, a clean RTL design, and accessibility features for Hebrew speakers.
 
+You can visit the live application here: [Education for All](https://education-for-all.onrender.com/)
+
 ## 📦 Tech Stack
 
 - **React** with TypeScript
