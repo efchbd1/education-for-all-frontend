@@ -50,3 +50,18 @@ git clone https://github.com/efchbd1013/education-for-all-frontend.git
 cd education-for-all-frontend
 npm install
 npm run dev
+```
+
+You also need to create two environment files with the appropriate base URL for your backend (local or cloud).
+Here is an example of what each file might contain:
+
+.env.development
+```bash
+REACT_APP_API_BASE_URL=https://localhost:58030/api
+```
+
+.env.production
+
+```bash
+REACT_APP_API_BASE_URL=https://education-for-all-backend.onrender.com/api
+```
