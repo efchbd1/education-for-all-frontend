@@ -106,7 +106,6 @@ export const refreshToken = async (): Promise<SignInResponse> => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
 
-    navigate(PATHS.LogIn);
     throw new Error("Failed to refresh token due to an unexpected error.");
   }
 };
