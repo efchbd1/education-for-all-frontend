@@ -2,7 +2,7 @@ import axios from "axios";
 import { UserType } from "./../types/domainTypes/user.types";
 import { API_BASE_URL } from "./config/api";
 
-const controller = `${API_BASE_URL}/api/User`;
+const controller = `${API_BASE_URL}/User`;
 
 export const getUserById = async (id: number): Promise<UserType> => {
   try {
