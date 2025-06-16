@@ -1,13 +1,9 @@
-import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "../../auth/utils";
 import axios from "axios";
-import { PATHS } from "routes/paths";
 import { API_BASE_URL } from "./config/api";
 
 // Controller route for authentication endpoints
 const controller = `${API_BASE_URL}/LogIn`;
-
-const navigate = useNavigate();
 
 type SignInResponse = {
   accessToken: string;
