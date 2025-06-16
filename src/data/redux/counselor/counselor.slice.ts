@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { CounselorType } from "data/types/domainTypes/counselor.types";
-import { getCounselorById } from "data/services/counselor.service";
+import { getAllCounselors, getCounselorById } from "data/services/counselor.service";
 
 type CounselorStateType = {
   counselors: Record<number, CounselorType>;
@@ -9,6 +9,13 @@ type CounselorStateType = {
 const initialState: CounselorStateType = {
   counselors: {},
 };
+
+export const fetchAllCounselors = createAsyncThunk(
+  "counselor/fetchAllCounselors",
+  async () => {
+    return await getAllCounselors(); 
+  }
+);
 
 export const fetchCounselorById = createAsyncThunk(
   "counselor/fetchCounselorById",
@@ -55,14 +62,24 @@ const counselorSlice = createSlice({
       state.counselors = {};
     },
   },
-  extraReducers: (builder) => {
-    // Handle the fulfilled state of the fetchCounselorById async thunk
+  
+ extraReducers: (builder) => {
     builder.addCase(fetchCounselorById.fulfilled, (state, action) => {
       if (action.payload.id !== undefined) {
         state.counselors[action.payload.id] = action.payload;
       } else {
         console.warn("Fetched counselor ID is undefined", action.payload);
       }
+    });
+
+    builder.addCase(fetchAllCounselors.fulfilled, (state, action) => {
+      action.payload.forEach((counselor) => {
+        if (counselor.id !== undefined) {
+          state.counselors[counselor.id] = counselor;
+        } else {
+          console.warn("Counselor ID is undefined", counselor);
+        }
+      });
     });
   },
 });
