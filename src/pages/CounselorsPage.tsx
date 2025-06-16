@@ -18,6 +18,7 @@ const CounselorsPage: React.FC = () => {
     const { currentUser, isAuthenticated } = useAppSetup();
     const [hoveredSignUp, setHoveredSignUp] = useState(false);
     const [hoveredLogin, setHoveredLogin] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const loadCounselors = async () => {
