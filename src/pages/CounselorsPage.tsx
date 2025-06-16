@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { Container, Typography, Grid, Paper, Box, TextField, Chip, Dialog, DialogActions, DialogContent, DialogTitle, Button } from '@mui/material';
 import { MailOutline, Person, WorkOutline, SchoolOutlined, BusinessCenter } from '@mui/icons-material';
-import { setCounselors } from 'data/redux/counselor/counselor.slice';
+import { fetchAllCounselors, setCounselors } from 'data/redux/counselor/counselor.slice';
 import { CounselorType } from 'data/types/domainTypes/counselor.types';
 import { useAppSetup } from 'data/useAppSetup';
 import ContactCounselorDialog from 'components/dialogs/contact/ContactCounselorDialog';
@@ -19,6 +19,23 @@ const CounselorsPage: React.FC = () => {
     const [hoveredSignUp, setHoveredSignUp] = useState(false);
     const [hoveredLogin, setHoveredLogin] = useState(false);
 
+    useEffect(() => {
+        const loadCounselors = async () => {
+            if (Object.keys(counselors).length === 0) {
+                setLoading(true);
+                try {
+                    await dispatch(fetchAllCounselors()).unwrap();
+                } catch (error) {
+                    console.error('Failed to fetch counselors:', error);
+                } finally {
+                    setLoading(false);
+                }
+            }
+        };
+
+        loadCounselors();
+    }, [dispatch, counselors]);
+    
     // Memoized filtered counselors based on search query and experience level
     const filteredCounselors = useMemo(() => {
         let result = Object.values(counselors).filter(counselor =>
