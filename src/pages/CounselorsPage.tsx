@@ -21,22 +21,20 @@ const CounselorsPage: React.FC = () => {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        const loadCounselors = async () => {
-            if (Object.keys(counselors).length === 0) {
-                setLoading(true);
-                try {
-                    await dispatch(fetchAllCounselors()).unwrap();
-                } catch (error) {
-                    console.error('Failed to fetch counselors:', error);
-                } finally {
-                    setLoading(false);
-                }
-            }
-        };
+    const loadCounselors = async () => {
+        setLoading(true);
+        try {
+            await dispatch(fetchAllCounselors()).unwrap();
+        } catch (error) {
+            console.error('Failed to fetch counselors:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
-        loadCounselors();
-    }, [dispatch, counselors]);
-    
+         loadCounselors();
+     }, [dispatch]);
+
     // Memoized filtered counselors based on search query and experience level
     const filteredCounselors = useMemo(() => {
         let result = Object.values(counselors).filter(counselor =>
