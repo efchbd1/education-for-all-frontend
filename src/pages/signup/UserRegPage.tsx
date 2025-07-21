@@ -134,7 +134,6 @@ const UserRegPage: React.FC = () => {
                 אני מתחייב/ת לעמוד ב
                 <RouterLink
                   to={PATHS.ForumRules}
-                  target="_blank"
                   rel="noopener noreferrer"
                   style={{
                     color: "#6A4E23",

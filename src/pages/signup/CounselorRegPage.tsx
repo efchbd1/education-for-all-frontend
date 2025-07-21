@@ -214,8 +214,7 @@ const CounselorRegPage: React.FC = () => {
               <span style={{ direction: "rtl", color: "#333", fontSize: 14 }}>
                 אני מתחייב/ת לעמוד ב
                 <RouterLink
-                  to={PATHS.ForumRules} // שינוי 2: החלפת href ב-to
-                  target="_blank"
+                  to={PATHS.ForumRules}
                   rel="noopener noreferrer"
                   style={{
                     color: "#6A4E23",

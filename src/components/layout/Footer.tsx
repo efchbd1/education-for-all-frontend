@@ -37,14 +37,13 @@ export default function Footer() {
       <FooterBar>
         <Container maxWidth="sm">
           <CopyrightText variant="body2">
-=            <RouterLink 
+            <RouterLink 
               to={PATHS.ForumRules} 
               style={{color: 'inherit', textDecoration: 'none'}}
             >
               תקנון
             </RouterLink>
             
-            {/* שינוי 3: הפרדת הקישורים */}
             <FooterLink color="inherit" onClick={handleContactClick}>
               צור קשר
             </FooterLink>
