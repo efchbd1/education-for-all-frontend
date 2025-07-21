@@ -131,18 +131,7 @@ const UserRegPage: React.FC = () => {
             }
             label={
               <span style={{ direction: "rtl", color: "#333", fontSize: 14 }}>
-                אני מתחייב/ת לעמוד ב
-                <RouterLink
-                  to={PATHS.ForumRules}
-                  rel="noopener noreferrer"
-                  style={{
-                    color: "#6A4E23",
-                    textDecoration: "none",
-                    fontWeight: "bold",
-                  }}
-                >
-                  תקנון הפורום
-                </RouterLink>
+                אני מתחייב/ת לעמוד בתקנון הפורום המופיע בתחתית האתר
               </span>
             }
             labelPlacement="start"
