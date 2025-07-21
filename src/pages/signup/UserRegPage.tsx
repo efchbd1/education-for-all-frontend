@@ -3,6 +3,7 @@ import { TextField, Button, Typography, Container, Link, Checkbox, FormControlLa
 import { AccountCircle, Lock, Email, Visibility, VisibilityOff } from "@mui/icons-material";
 import { PATHS } from "routes/paths";
 import useUserRegForm from "../../hooks/useUserRegForm";
+import { Link as RouterLink } from 'react-router-dom'; 
 import * as classes from "../../styles/form"
 
 const UserRegPage: React.FC = () => {
@@ -131,8 +132,8 @@ const UserRegPage: React.FC = () => {
             label={
               <span style={{ direction: "rtl", color: "#333", fontSize: 14 }}>
                 אני מתחייב/ת לעמוד ב
-                <Link
-                  href={PATHS.ForumRules}
+                <RouterLink
+                  to={PATHS.ForumRules}
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
@@ -142,7 +143,7 @@ const UserRegPage: React.FC = () => {
                   }}
                 >
                   תקנון הפורום
-                </Link>
+                </RouterLink>
               </span>
             }
             labelPlacement="start"

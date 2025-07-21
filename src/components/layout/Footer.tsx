@@ -1,8 +1,7 @@
 import { useState } from "react";
 import CssBaseline from '@mui/material/CssBaseline';
-import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
+import { Link as RouterLink } from 'react-router-dom'; 
 import { PATHS } from 'routes/paths';
 import ContactUsDialog from 'components/dialogs/contact/ContactUsDialog';
 import AuthenticationDialog from 'components/dialogs/AuthenticationDialog';
@@ -38,17 +37,26 @@ export default function Footer() {
       <FooterBar>
         <Container maxWidth="sm">
           <CopyrightText variant="body2">
-            <FooterLink color="inherit" href={PATHS.ForumRules}>
+=            <RouterLink 
+              to={PATHS.ForumRules} 
+              style={{color: 'inherit', textDecoration: 'none'}}
+            >
               תקנון
-            </FooterLink>
+            </RouterLink>
+            
+            {/* שינוי 3: הפרדת הקישורים */}
             <FooterLink color="inherit" onClick={handleContactClick}>
               צור קשר
             </FooterLink>
+            
             <SecondaryBox>
               © {new Date().getFullYear()} אפרת בדיל, פיתוח מקצועי מקצה לקצה.{' '}
-              <FooterLink color="inherit" href={PATHS.AboutMe}>
+              <RouterLink 
+                to={PATHS.AboutMe}
+                style={{color: 'inherit', textDecoration: 'none', fontWeight: 'normal'}}
+              >
                 לקריאה אודותיי לחצו כאן
-              </FooterLink>
+              </RouterLink>
             </SecondaryBox>
           </CopyrightText>
         </Container>

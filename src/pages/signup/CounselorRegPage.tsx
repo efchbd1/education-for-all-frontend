@@ -4,7 +4,7 @@ import { AccountCircle, Lock, Email, Visibility, VisibilityOff, Phone, School, W
 import * as classes from '../../styles/form';
 import { useCounselorRegForm } from '../../hooks/useCounselorRegForm';
 import { PATHS } from 'routes/paths';
-
+import { Link as RouterLink } from 'react-router-dom';
 const CounselorRegPage: React.FC = () => {
 
   const {
@@ -213,8 +213,8 @@ const CounselorRegPage: React.FC = () => {
             label={
               <span style={{ direction: "rtl", color: "#333", fontSize: 14 }}>
                 אני מתחייב/ת לעמוד ב
-                <Link
-                  href={PATHS.ForumRules}
+                <RouterLink
+                  to={PATHS.ForumRules} // שינוי 2: החלפת href ב-to
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
@@ -224,7 +224,7 @@ const CounselorRegPage: React.FC = () => {
                   }}
                 >
                   תקנון הפורום
-                </Link>
+                </RouterLink>
               </span>
             }
             labelPlacement="start"
